@@ -1,6 +1,15 @@
 import {
+  BsCameraReels
+} from 'react-icons/bs';
+
+import {
+  PiEnvelope
+} from 'react-icons/pi';
+
+import {
+  VscPerson,
   VscPieChart,
-  VscSettingsGear
+  VscSettingsGear,
 } from 'react-icons/vsc';
 
 export const menuItemsLoggedIn = [
@@ -8,6 +17,21 @@ export const menuItemsLoggedIn = [
     title: 'Metrics',
     path: '/',
     icon: (<VscPieChart />)
+  },
+  {
+    title: 'Messages',
+    path: '/messages',
+    icon: (<PiEnvelope />)
+  },
+  {
+    title: 'Reels',
+    path: '/reels',
+    icon: (<BsCameraReels />)
+  },
+  {
+    title: 'Testimonials',
+    path: '/testimonials',
+    icon: (<VscPerson />)
   },
   {
     title: 'Configuration',

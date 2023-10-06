@@ -89,8 +89,8 @@ const ConfigurationPage = () => {
         <MainContainer>
             <TabContainer>
                 <TabSelector active={tabOneActive} onClick={() => activateTabOne()}>Welcome Page Configuration</TabSelector>
-                <TabSelector active={tabTwoActive} onClick={() => activateTabTwo()}>About Page Configuration</TabSelector>
-                <TabSelector active={tabThreeActive} onClick={() => activateTabThree()}>Theme Configuration</TabSelector>
+                {/* <TabSelector active={tabTwoActive} onClick={() => activateTabTwo()}>About Page Configuration</TabSelector>
+                <TabSelector active={tabThreeActive} onClick={() => activateTabThree()}>Theme Configuration</TabSelector> */}
             </TabContainer>
             <ContentContainer>
                 { showCurrentTab() }

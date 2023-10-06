@@ -13,8 +13,7 @@ import {
 const client = new Client();
 
 const MetricsPage = () => {
-    const [ loading, setLoading ] = useState(true);
-    const [ products, setProducts ] = useState(null);
+    const [ loading, setLoading ] = useState(false);
 
     const [ currentTab, setCurrentTab ] = useState(1);
     const [ tabOneActive, setTabOneActive ] = useState(true);
@@ -28,17 +27,6 @@ const MetricsPage = () => {
     // Amount of products sold
     // Amount of users deleting their accounts
     // News letter accepts and cancels
-
-    useEffect(() => {
-        getProducts();
-    }, []);
-
-    const getProducts = async () => {
-        const res = await client.getProducts();
-
-        setProducts(res.rows);
-        setLoading(false);
-    }
 
     const activateTabOne = () => {
         setCurrentTab(1);
@@ -90,8 +78,8 @@ const MetricsPage = () => {
         <div>
             <TabContainer>
                 <TabSelector active={tabOneActive} onClick={() => activateTabOne()}>Views</TabSelector>
-                <TabSelector active={tabTwoActive} onClick={() => activateTabTwo()}>Customers</TabSelector>
-                <TabSelector active={tabThreeActive} onClick={() => activateTabThree()}>Sales</TabSelector>
+                {/* <TabSelector active={tabTwoActive} onClick={() => activateTabTwo()}>Customers</TabSelector>
+                <TabSelector active={tabThreeActive} onClick={() => activateTabThree()}>Sales</TabSelector> */}
             </TabContainer>
             { showCurrentTab() }
         </div>

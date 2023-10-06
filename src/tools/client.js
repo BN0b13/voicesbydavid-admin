@@ -42,66 +42,6 @@ export default class Client {
         }   
     }
 
-    // Accounts
-
-    async getAccountById(id) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const account = await fetch(`${api}/admin/user/${id}`, requestOptions);
-        const res = await account.json();
-        return res;
-    }
-
-    // Categories
-
-    async getCategories() {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get);
-        const categories = await fetch(`${api}/categories`, requestOptions);
-        const res = await categories.json();
-        return res;
-    }
-
-    async getCategoriesWithoutAssociations() {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const categories = await fetch(`${api}/admin/categories`, requestOptions);
-        const res = await categories.json();
-        return res;
-    }
-
-    async getCategoryById(id) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get);
-        const categories = await fetch(`${api}/categories/${id}`, requestOptions);
-        const res = await categories.json();
-        return res;
-    }
-
-    async getCategoryByType(type) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get);
-        const categories = await fetch(`${api}/categories/type/${type}`, requestOptions);
-        const res = await categories.json();
-        return res;
-    }
-
-    async createCategory(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.post, data, true, true);
-        const categories = await fetch(`${api}/admin/categories`, requestOptions);
-        const res = await categories.json();
-        return res;
-    }
-
-    async updateCategory(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
-        const categories = await fetch(`${api}/admin/categories`, requestOptions);
-        const res = await categories.json();
-        return res;
-    }
-
-    async deleteCategory(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.delete, data, true);
-        const categories = await fetch(`${api}/admin/categories`, requestOptions);
-        const res = await categories.json();
-        return res;
-    }
-
     // Configuration
 
     async getWelcomeImages() {
@@ -139,181 +79,26 @@ export default class Client {
         return res;
     }
 
-    // Customers
+    // Messages
 
-    async getCustomers() {
+    async getMessages() {
         const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const customers = await fetch(`${api}/admin/customers`, requestOptions);
-        const res = await customers.json();
+        const account = await fetch(`${api}/admin/contact`, requestOptions);
+        const res = await account.json();
         return res;
     }
 
-    // Employees
-
-    async getEmployees() {
+    async getMessageById(id) {
         const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const customers = await fetch(`${api}/admin/employees`, requestOptions);
-        const res = await customers.json();
+        const account = await fetch(`${api}/admin/contact/${id}`, requestOptions);
+        const res = await account.json();
         return res;
     }
 
-    // Inventory
-
-    async getInventory() {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const inventory = await fetch(`${api}/admin/inventory`, requestOptions);
-        const res = await inventory.json();
-        return res;
-    }
-
-    async getInventoryById(id) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const inventory = await fetch(`${api}/admin/inventory/id`, requestOptions);
-        const res = await inventory.json();
-        return res;
-    }
-
-    async updateInventory(data) {
+    async updateMessage(data) {
         const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
-        const inventory = await fetch(`${api}/admin/inventory`, requestOptions);
-        const res = await inventory.json();
-        return res;
-    }
-
-    async deleteInventory(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.delete, data, true);
-        const inventory = await fetch(`${api}/admin/inventory`, requestOptions);
-        const res = await inventory.json();
-        return res;
-    }
-
-    // Orders
-
-    async getOrders() {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const orders = await fetch(`${api}/admin/orders`, requestOptions);
-        const res = await orders.json();
-        return res;
-    }
-
-    async getOrderByRefId(refId) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const orders = await fetch(`${api}/admin/orders/search/ref-id/${refId}`, requestOptions);
-        const res = await orders.json();
-        return res;
-    }
-
-    async updateOrder(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
-        const patchOrder = await fetch(`${api}/admin/orders`, requestOptions);
-        const res = await patchOrder.json();
-        return res;
-    }
-
-    async sendPaymentLink(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
-        const patchOrder = await fetch(`${api}/admin/orders/payment-link`, requestOptions);
-        const res = await patchOrder.json();
-        return res;
-    }
-
-    async shipOrder(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
-        const patchOrder = await fetch(`${api}/admin/orders/ship`, requestOptions);
-        const res = await patchOrder.json();
-        return res;
-    }
-
-    // Products
-
-    async getProducts() {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get);
-        const products = await fetch(`${api}/products`, requestOptions);
-        const res = await products.json();
-        return res;
-    }
-
-    async getProductsByType(type) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get);
-        const products = await fetch(`${api}/products/type/${type}`, requestOptions);
-        const res = await products.json();
-        return res;
-    }
-
-    async getProductById(id) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get);
-        const product = await fetch(`${api}/products/${id}`, requestOptions);
-        const res = await product.json();
-        return res;
-    }
-
-    async getProductInventory() {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const inventory = await fetch(`${api}/admin/products`, requestOptions);
-        const res = await inventory.json();
-        return res;
-    }
-
-    async getProductsByCategoryId(id) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const productTypes = await fetch(`${api}/admin/products/category/${id}`, requestOptions);
-        const res = await productTypes.json();
-        return res;
-    }
-
-    async getProductTypes() {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const productTypes = await fetch(`${api}/admin/products/product-types`, requestOptions);
-        const res = await productTypes.json();
-        return res;
-    }
-
-    async getProductProfiles() {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get);
-        const productProfiles = await fetch(`${api}/products/profiles/all`, requestOptions);
-        const res = await productProfiles.json();
-        return res;
-    }
-
-    async createProduct(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.post, data, true, true);
-        const product = await fetch(`${api}/admin/products`, requestOptions);
-        const res = await product.json();
-        return res;
-    }
-
-    async createProductProfile(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.post, data, true, true);
-        const productProfile = await fetch(`${api}/admin/products/profiles`, requestOptions);
-        const res = await productProfile.json();
-        return res;
-    }
-
-    async addProductImage(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true, true);
-        const productImage = await fetch(`${api}/admin/products/images`, requestOptions);
-        const res = await productImage.json();
-        return res;
-    }
-
-    async updateProduct(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
-        const updateProduct = await fetch(`${api}/admin/products`, requestOptions);
-        const res = await updateProduct.json();
-        return res;
-    }
-
-    async deleteProduct(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.delete, data, true);
-        const deleteProduct = await fetch(`${api}/admin/products`, requestOptions);
-        const res = await deleteProduct.json();
-        return res;
-    }
-
-    async deleteProductImage(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.delete, data, true);
-        const deleteProductImage = await fetch(`${api}/admin/products/product-image`, requestOptions);
-        const res = await deleteProductImage.json();
+        const patchWelcomeImage = await fetch(`${api}/admin/contact`, requestOptions);
+        const res = await patchWelcomeImage.json();
         return res;
     }
 
