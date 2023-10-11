@@ -58,4 +58,5 @@ export const MessagesTableBody = styled.tbody`
 
 export const MessagesTableRow = styled.tr`
     border: 1px solid;
+    cursor: pointer;
 `;

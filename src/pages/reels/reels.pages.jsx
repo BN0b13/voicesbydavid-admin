@@ -1,19 +1,41 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import AddReels from '../../components/reels/add-reels/add-reels.component';
+import Spinner from '../../components/reusable/spinner/spinner.component';
+
+import Client from '../../tools/client';
 
 import {
     MainContainer,
-    MainSubtitle,
-    MainText,
-    MainTitle,
+    ReelsTable,
+    ReelsTableHeader,
+    ReelsTableHead,
+    ReelsTableBody,
+    ReelsTableRow,
+    ReelsTableData,
+    ReelsTitle,
     TabContainer,
     TabSelector
 } from './reels.styles';
+
+const client = new Client();
 
 const ReelsPage = () => {
     const [ loading, setLoading ] = useState(true);
     const [ currentTab, setCurrentTab ] = useState(1);
     const [ tabOneActive, setTabOneActive ] = useState(true);
     const [ tabTwoActive, setTabTwoActive ] = useState(false);
+    const [ reels, setReels ] = useState('');
+
+    useEffect(() => {
+        getReels();
+    }, []);
+
+    const getReels = async () => {
+        const res = await client.getReels();
+        setReels(res.rows);
+        setLoading(false);
+    }
 
     const activateTabOne = () => {
         setCurrentTab(1);
@@ -30,29 +52,46 @@ const ReelsPage = () => {
     const showCurrentTab = () => {
 
         if(currentTab === 2) {
-            return (
-                <>
-                    <MainSubtitle>Video</MainSubtitle>
-                    <MainText>Coming Soon...</MainText>
-                </>
-            )
+            return (<AddReels />);
         }
 
         return (
             <>
-                <MainSubtitle>Audio</MainSubtitle>
-                <MainText>Coming Soon...</MainText>
+                {loading ? 
+                    <Spinner />
+                :
+                    reels ?
+                        <ReelsTable>
+                            <ReelsTableHeader>
+                                <ReelsTableRow>
+                                    <ReelsTableHead>Position</ReelsTableHead>
+                                    <ReelsTableHead>Title</ReelsTableHead>
+                                    <ReelsTableHead>Active</ReelsTableHead>
+                                </ReelsTableRow>
+                            </ReelsTableHeader>
+                            <ReelsTableBody>
+                                {reels.map((reel, index) => (
+                                    <ReelsTableRow key={index} onClick={() => window.location.href = `/reels/${reel.id}`}>
+                                        <ReelsTableData>{reel.position}</ReelsTableData>
+                                        <ReelsTableData>{reel.title ? reel.title : 'No Title'}</ReelsTableData>
+                                        <ReelsTableData>{reel.active ? 'Yes' : 'No'}</ReelsTableData>
+                                    </ReelsTableRow>
+                                ))}
+                            </ReelsTableBody>
+                        </ReelsTable>
+                    :
+                        <ReelsTitle>No Reels To Display</ReelsTitle>
+                }
             </>
-        )
+        );
     }
 
     return (
         <MainContainer>
             <TabContainer>
-                        <TabSelector active={tabOneActive} onClick={() => activateTabOne()}>Audio</TabSelector>
-                        <TabSelector active={tabTwoActive} onClick={() => activateTabTwo()}>Video</TabSelector>
+                        <TabSelector active={tabOneActive} onClick={() => activateTabOne()}>Library</TabSelector>
+                        <TabSelector active={tabTwoActive} onClick={() => activateTabTwo()}>Add Reel</TabSelector>
                     </TabContainer>
-            <MainTitle>Reels</MainTitle>
             { showCurrentTab() }
         </MainContainer>
     )

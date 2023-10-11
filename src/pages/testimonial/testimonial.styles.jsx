@@ -5,15 +5,14 @@ export const MainContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
 `;
 
-export const MessageDataContainer = styled.div`
+export const TestimonialDataContainer = styled.div`
     display: flex;
     flex-direction: row;
 `;
 
-export const MessageContainer = styled.div`
+export const TestimonialContainer = styled.div`
     margin: 40px 0;
     padding: 20px;
 `;
@@ -32,7 +31,14 @@ export const ContactInfoContainer = styled.div`
     margin: 0 40px;
 `;
 
-export const MessageTitle = styled.h2`
+export const TestimonialImage = styled.img`
+    margin: 10px 0;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+`;
+
+export const TestimonialTitle = styled.h2`
 
 `;
 
@@ -46,25 +52,6 @@ export const ContactInfoText = styled.h4`
     padding: 2px;
 `;
 
-export const ContactInfoMessage = styled.h5`
+export const ContactInfoTestimonial = styled.h5`
 
-`;
-
-export const DeleteMessageButton = styled.button`
-    font-family: 'Open Sans Condensed';
-    font-weight: bolder;
-    text-transform: uppercase;
-    color: #fff;
-    background-color: ${props => props.color};
-    border: none;
-    border-radius: 2px;
-    margin-top: 10px;
-    height: 50px;
-    width: 100px;
-
-    &:hover {
-        color: ${props => props.color};
-        background-color: #fff;
-        border: ${props => props.color} solid 1px;
-    }
 `;

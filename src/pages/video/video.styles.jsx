@@ -8,32 +8,14 @@ export const MainContainer = styled.div`
     width: 100%;
 `;
 
-export const MessageDataContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-`;
-
-export const MessageContainer = styled.div`
-    margin: 40px 0;
-    padding: 20px;
-`;
-
 export const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
     margin: 20px 0;
 `;
 
-export const ContactInfoContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    margin: 0 40px;
-`;
-
-export const MessageTitle = styled.h2`
-
+export const VideoTitle = styled.h2`
+    text-align: center;
 `;
 
 export const BackText = styled.h4`
@@ -41,16 +23,7 @@ export const BackText = styled.h4`
     cursor: pointer;
 `;
 
-export const ContactInfoText = styled.h4`
-    margin: 1px;
-    padding: 2px;
-`;
-
-export const ContactInfoMessage = styled.h5`
-
-`;
-
-export const DeleteMessageButton = styled.button`
+export const DeleteVideoButton = styled.button`
     font-family: 'Open Sans Condensed';
     font-weight: bolder;
     text-transform: uppercase;

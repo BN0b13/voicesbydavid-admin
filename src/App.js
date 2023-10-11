@@ -6,7 +6,9 @@ import LoginPage from './pages/login/login.pages';
 import MessagePage from './pages/message/message.pages';
 import MessagesPage from './pages/messages/messages.pages';
 import MetricsPage from './pages/metrics/metrics.pages';
+import ReelPage from './pages/reel/reel.pages';
 import ReelsPage from './pages/reels/reels.pages';
+import TestimonialPage from './pages/testimonial/testimonial.pages';
 import TestimonialsPage from './pages/testimonials/testimonials.pages';
 
 import Footer from './components/app/footer/footer.component';
@@ -42,7 +44,9 @@ function App() {
                 <Route path='/messages' element={<MessagesPage />} />
                 <Route path='/messages/:id' element={<MessagePage />} />
                 <Route path='/reels' element={<ReelsPage />} />
+                <Route path='/reels/:id' element={<ReelPage />} />
                 <Route path='/testimonials' element={<TestimonialsPage />} />
+                <Route path='/testimonials/:id' element={<TestimonialPage />} />
                 <Route path="/configuration" element={<ConfigurationPage />} />
             </Routes>
             <Footer />

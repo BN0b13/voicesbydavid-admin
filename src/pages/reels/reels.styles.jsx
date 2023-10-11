@@ -32,14 +32,36 @@ export const TabSelector = styled.button`
     }
 `;
 
-export const MainTitle = styled.h2`
-    margin: 40px;
-`;
-
-export const MainSubtitle = styled.h4`
+export const ReelsTitle = styled.h2`
+    text-align: center;
     margin: 20px;
 `;
 
-export const MainText = styled.h6`
-    margin: 20px;
+export const ReelsTable = styled.table`
+    margin-top: 40px;
+    border: 1px solid;
+    border-collapse: collapse;
+`;
+
+export const ReelsTableHeader = styled.thead`
+    
+`;
+
+export const ReelsTableHead = styled.th`
+    padding: 8px;
+    border: 1px solid;
+`;
+
+export const ReelsTableBody = styled.tbody`
+    
+`;
+
+export const ReelsTableRow = styled.tr`
+    border: 1px solid;
+    cursor: pointer;
+`;
+
+export const ReelsTableData = styled.td`
+padding: 8px;
+border: 1px solid;
 `;

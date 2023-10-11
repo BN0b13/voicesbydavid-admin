@@ -13,6 +13,7 @@ import {
     ContactInfoContainer,
     ContactInfoMessage,
     ContactInfoText,
+    DeleteMessageButton,
     MainContainer,
     MessageContainer,
     MessageDataContainer,
@@ -69,6 +70,17 @@ const MessagePage = () => {
         await getMessage();
         return
     }
+
+    const softDeleteItem = async () => {
+        setLoading(true);
+        const data = {
+            id,
+            deleted: !message.deleted
+        }
+        await client.updateMessage(data);
+        await getMessage();
+        return
+    }
     
 
     return (
@@ -79,31 +91,35 @@ const MessagePage = () => {
                 {loading ?
                     <Spinner />
                 :
-                    <>
-                        <MessageDataContainer>
-                            <ContactInfoContainer>
-                                <ContactInfoText>Name: { `${message.firstName} ${message.lastName}` }</ContactInfoText>
-                                <ContactInfoText>Phone: { message.phone }</ContactInfoText>
-                                <ContactInfoText>Email: { message.email }</ContactInfoText>
-                            </ContactInfoContainer>
-                            <ContactInfoContainer>
-                                <ContactInfoText>Date: { formatDate(message.createdAt) }</ContactInfoText>
-                                <ContactInfoText>Status: { message.status }</ContactInfoText>
-                                <ContactInfoText>Replied: { message.replied ? 'Yes' : 'No' }</ContactInfoText>
-                            </ContactInfoContainer>
-                        </MessageDataContainer>
-                        <MessageContainer>
-                            <ContactInfoMessage>{ message.message }</ContactInfoMessage>
-                        </MessageContainer>
-                        <ButtonContainer>
-                            <Button onClick={() => markMessageReplied()}>
-                            { message.replied ? 'Undo Replied' : 'Mark Replied' }
-                            </Button>
-                            <Button onClick={() => updateMessageStatus()}>
-                                { message.status === 'new' ? 'Mark Read' : 'Mark New' }
-                            </Button>
-                        </ButtonContainer>
-                    </>
+                    message ?
+                        <>
+                            <MessageDataContainer>
+                                <ContactInfoContainer>
+                                    <ContactInfoText>Name: { `${message.firstName} ${message.lastName}` }</ContactInfoText>
+                                    <ContactInfoText>Phone: { message.phone }</ContactInfoText>
+                                    <ContactInfoText>Email: { message.email }</ContactInfoText>
+                                </ContactInfoContainer>
+                                <ContactInfoContainer>
+                                    <ContactInfoText>Date: { formatDate(message.createdAt) }</ContactInfoText>
+                                    <ContactInfoText>Status: { message.status }</ContactInfoText>
+                                    <ContactInfoText>Replied: { message.replied ? 'Yes' : 'No' }</ContactInfoText>
+                                </ContactInfoContainer>
+                            </MessageDataContainer>
+                            <MessageContainer>
+                                <ContactInfoMessage>{ message.message }</ContactInfoMessage>
+                            </MessageContainer>
+                            <ButtonContainer>
+                                <Button onClick={() => markMessageReplied()}>
+                                { message.replied ? 'Undo Replied' : 'Mark Replied' }
+                                </Button>
+                                <Button onClick={() => updateMessageStatus()}>
+                                    { message.status === 'new' ? 'Mark Read' : 'Mark New' }
+                                </Button>
+                            </ButtonContainer>
+                            <DeleteMessageButton color={message.deleted ? 'green' : 'red'} onClick={() => softDeleteItem()}>{ message.deleted ? 'Restore' : 'DELETE' }</DeleteMessageButton>
+                        </>
+                    :
+                        <MessageTitle>No Message To Display</MessageTitle>
                 }
             </MainContainer>
 

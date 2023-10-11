@@ -102,6 +102,106 @@ export default class Client {
         return res;
     }
 
+    // Reels
+
+    async getReels() {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get);
+        const getWelcomeImage = await fetch(`${api}/reels`, requestOptions);
+        const res = await getWelcomeImage.json();
+        return res;
+    }
+
+    async getReelById(id) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
+        const getWelcomeImage = await fetch(`${api}/admin/reels/all/${id}`, requestOptions);
+        const res = await getWelcomeImage.json();
+        return res;
+    }
+
+    async changeActivationStatus(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
+        const patchWelcomeImage = await fetch(`${api}/admin/reels/activate`, requestOptions);
+        const res = await patchWelcomeImage.json();
+        return res;
+    }
+
+
+    async deleteReel(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.delete, data, true);
+        const welcomeImage = await fetch(`${api}/admin/reels`, requestOptions);
+        const res = await welcomeImage.json();
+        return res;
+    }
+
+    //// Video
+
+    async getVideoReels() {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get);
+        const getWelcomeImage = await fetch(`${api}/reels/video`, requestOptions);
+        const res = await getWelcomeImage.json();
+        return res;
+    }
+
+    async postVideo(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.post, data, true, true);
+        const postWelcomeImage = await fetch(`${api}/admin/reels/video`, requestOptions);
+        const res = await postWelcomeImage.json();
+        return res;
+    }
+
+    //// Youtube
+
+    async postYoutubeReel(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.post, data, true);
+        const postWelcomeImage = await fetch(`${api}/admin/reels/youtube`, requestOptions);
+        const res = await postWelcomeImage.json();
+        return res;
+    }
+
+    async updateYoutubeReel(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
+        const patchWelcomeImage = await fetch(`${api}/admin/reels/youtube`, requestOptions);
+        const res = await patchWelcomeImage.json();
+        return res;
+    }
+
+    // Testimonials
+
+    async getTestimonials() {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
+        const getWelcomeImage = await fetch(`${api}/testimonials`, requestOptions);
+        const res = await getWelcomeImage.json();
+        return res;
+    }
+
+    async getTestimonialById(id) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
+        const getWelcomeImage = await fetch(`${api}/admin/testimonials/${id}`, requestOptions);
+        const res = await getWelcomeImage.json();
+        return res;
+    }
+
+    async postTestimonial(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.post, data, true, true);
+        const postWelcomeImage = await fetch(`${api}/admin/testimonials`, requestOptions);
+        const res = await postWelcomeImage.json();
+        return res;
+    }
+
+    async updateTestimonial(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true, true);
+        const patchWelcomeImage = await fetch(`${api}/admin/testimonials`, requestOptions);
+        const res = await patchWelcomeImage.json();
+        return res;
+    }
+
+    async deleteTestimonial(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.delete, data, true);
+        const welcomeImage = await fetch(`${api}/admin/testimonials`, requestOptions);
+        const res = await welcomeImage.json();
+        return res;
+    }
+
     // Views
 
     async getViews() {

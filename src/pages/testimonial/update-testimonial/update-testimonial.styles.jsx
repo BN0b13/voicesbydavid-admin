@@ -1,27 +1,17 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const MainContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+
 `;
 
-export const MessageDataContainer = styled.div`
+export const UpdateTestimonialDataContainer = styled.div`
     display: flex;
     flex-direction: row;
 `;
 
-export const MessageContainer = styled.div`
+export const UpdateTestimonialContainer = styled.div`
     margin: 40px 0;
     padding: 20px;
-`;
-
-export const ButtonContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin: 20px 0;
 `;
 
 export const ContactInfoContainer = styled.div`
@@ -32,25 +22,32 @@ export const ContactInfoContainer = styled.div`
     margin: 0 40px;
 `;
 
-export const MessageTitle = styled.h2`
+export const ButtonContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+`;
+
+export const MainTitle = styled.h2`
 
 `;
 
-export const BackText = styled.h4`
-    text-align: start;
-    cursor: pointer;
+export const UpdateTestimonialInput = styled.input`
+    margin: 10px 0;
 `;
 
-export const ContactInfoText = styled.h4`
-    margin: 1px;
-    padding: 2px;
+export const UpdateTestimonialTextarea = styled.textarea`
+    margin: 10px 0;
 `;
 
-export const ContactInfoMessage = styled.h5`
-
+export const UpdateTestimonialImage = styled.img`
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin: 20px 0;
 `;
 
-export const DeleteMessageButton = styled.button`
+export const DeleteTestimonialButton = styled.button`
     font-family: 'Open Sans Condensed';
     font-weight: bolder;
     text-transform: uppercase;
@@ -67,4 +64,8 @@ export const DeleteMessageButton = styled.button`
         background-color: #fff;
         border: ${props => props.color} solid 1px;
     }
+`;
+
+export const TextSubtitle = styled.h6`
+
 `;
