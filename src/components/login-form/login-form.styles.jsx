@@ -26,18 +26,19 @@ export const LoginFormForm = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 20px;
 `;
 
 export const LoginFormInput = styled.input`
-
-`;
-
-export const LoginFormLabel = styled.label`
-    margin: 3px;
-    padding: 2px;
+    margin: 5px 0;
 `;
 
 export const LoginFormLogo = styled.img`
     height: 320px;
     width: 320px;
+`;
+
+export const LoginFormText = styled.h6`
+    margin: 20px;
+    cursor: pointer;
 `;

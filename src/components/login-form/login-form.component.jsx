@@ -12,8 +12,8 @@ import {
   LoginFormForm,
   LoginFormErrorContainer,
   LoginFormInput,
-  LoginFormLabel,
   LoginFormLogo,
+  LoginFormText
 } from './login-form.styles';
 
 class LoginForm extends React.Component{
@@ -109,22 +109,20 @@ class LoginForm extends React.Component{
         <LoginFormLogo src={logo} alt="Voices By David Login" />
 
         <LoginFormForm>
-          <LoginFormLabel>Email: 
             <LoginFormInput 
-            name="email" 
-            type="text" 
+            name='email' 
+            type='text'
             value={this.state.email} 
             onChange={this.handleChange}
+            placeholder='Email'
             required />
-          </LoginFormLabel>
-          <LoginFormLabel>Password: 
             <LoginFormInput 
-            name="password" 
-            type="password" 
+            name='password'
+            type='password'
             value={this.state.password} 
             onChange={this.handleChange}
+            placeholder='Password'
             required />
-          </LoginFormLabel>
           { this.state.errorVisible && 
             <LoginFormErrorContainer onClose={() => this.setState({ errorVisible: false })}>
               {this.state.errorMsg}
@@ -133,6 +131,7 @@ class LoginForm extends React.Component{
           <LoginFormButtonContainer>
             <Button onClick={this.handleSubmit}>Login</Button>
           </LoginFormButtonContainer>
+          <LoginFormText onClick={() => window.location = '/password-reset'}>Forgot Password</LoginFormText>
         </LoginFormForm>
       </LoginFormContainer>
     )

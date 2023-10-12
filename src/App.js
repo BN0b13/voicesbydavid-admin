@@ -6,6 +6,7 @@ import LoginPage from './pages/login/login.pages';
 import MessagePage from './pages/message/message.pages';
 import MessagesPage from './pages/messages/messages.pages';
 import MetricsPage from './pages/metrics/metrics.pages';
+import PasswordResetPage from './pages/password-reset/password-reset.pages';
 import ReelPage from './pages/reel/reel.pages';
 import ReelsPage from './pages/reels/reels.pages';
 import TestimonialPage from './pages/testimonial/testimonial.pages';
@@ -56,7 +57,12 @@ function App() {
     }
     
     return (
-      <LoginPage /> 
+      <div>
+        <Routes>
+          <Route index element={<LoginPage />} />
+          <Route path='/password-reset/*' element={<PasswordResetPage />} />
+        </Routes>
+      </div>
     );
   }
 

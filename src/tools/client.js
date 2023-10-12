@@ -202,6 +202,29 @@ export default class Client {
         return res;
     }
 
+    // Users
+
+    async isPasswordRestTokenValid(token) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
+        const isEmailTokenValid = await fetch(`${api}/user/reset-password-token/verify/${token}`, requestOptions);
+        const res = await isEmailTokenValid.json();
+        return res;
+    }
+
+    async passwordResetEmail(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.post, data);
+        const passwordResetEmail = await fetch(`${api}/user/reset-password`, requestOptions);
+        const res = await passwordResetEmail.json();
+        return res;
+    }
+
+    async completePasswordReset(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.post, data);
+        const completePasswordReset = await fetch(`${api}/user/reset-password/token`, requestOptions);
+        const res = await completePasswordReset.json();
+        return res;
+    }
+
     // Views
 
     async getViews() {
