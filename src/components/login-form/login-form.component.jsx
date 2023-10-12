@@ -35,6 +35,12 @@ class LoginForm extends React.Component{
     this.setState({ [name]: value });
   }
 
+  handleKeyDown = e => {
+    if(e.key === 'Enter') {
+      this.handleSubmit(e);
+    }
+  }
+
   checkFields = () => {
     if(this.state.email.length > 0 && this.state.password.length > 0) {
       return true
@@ -114,6 +120,7 @@ class LoginForm extends React.Component{
             type='text'
             value={this.state.email} 
             onChange={this.handleChange}
+            onKeyDown={(e) => this.handleKeyDown(e)}
             placeholder='Email'
             required />
             <LoginFormInput 
@@ -121,6 +128,7 @@ class LoginForm extends React.Component{
             type='password'
             value={this.state.password} 
             onChange={this.handleChange}
+            onKeyDown={(e) => this.handleKeyDown(e)}
             placeholder='Password'
             required />
           { this.state.errorVisible && 
