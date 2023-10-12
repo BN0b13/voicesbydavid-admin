@@ -204,6 +204,22 @@ export default class Client {
 
     // Users
 
+    async getUser() {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
+        const account = await fetch(`${api}/admin/user`, requestOptions);
+        const res = await account.json();
+
+        return res;
+    }
+
+    async updateAccount(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
+        const account = await fetch(`${api}/admin/users`, requestOptions);
+        const res = await account.json();
+
+        return res;
+    }
+
     async isPasswordRestTokenValid(token) {
         const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
         const isEmailTokenValid = await fetch(`${api}/user/reset-password-token/verify/${token}`, requestOptions);
@@ -222,6 +238,13 @@ export default class Client {
         const requestOptions = this.fetchOptions(this.fetchMethods.post, data);
         const completePasswordReset = await fetch(`${api}/user/reset-password/token`, requestOptions);
         const res = await completePasswordReset.json();
+        return res;
+    }
+
+    async updateAccountPassword(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
+        const updateAccountPassword = await fetch(`${api}/admin/user/update-password`, requestOptions);
+        const res = await updateAccountPassword.json();
         return res;
     }
 

@@ -11,6 +11,7 @@ import ReelPage from './pages/reel/reel.pages';
 import ReelsPage from './pages/reels/reels.pages';
 import TestimonialPage from './pages/testimonial/testimonial.pages';
 import TestimonialsPage from './pages/testimonials/testimonials.pages';
+import UpdatePasswordPage from './pages/update-password/update-password.pages';
 
 import Footer from './components/app/footer/footer.component';
 import HamburgerMenu from './components/app/hamburger-menu/hamburger-menu.component';
@@ -48,7 +49,8 @@ function App() {
                 <Route path='/reels/:id' element={<ReelPage />} />
                 <Route path='/testimonials' element={<TestimonialsPage />} />
                 <Route path='/testimonials/:id' element={<TestimonialPage />} />
-                <Route path="/configuration" element={<ConfigurationPage />} />
+                <Route path='/configuration' element={<ConfigurationPage />} />
+                <Route path='/configuration/update-password' element={<UpdatePasswordPage />} />
             </Routes>
             <Footer />
           </div>

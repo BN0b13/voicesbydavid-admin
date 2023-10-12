@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import AccountPage from '../account/account.pages';
 import Contents from '../../components/configuration/welcome/contents/contents.component';
 import CurrentWelcomeImages from '../../components/configuration/welcome/current/current.component';
 import ImportWelcomeImage from '../../components/configuration/welcome/import/import.component';
@@ -59,24 +60,26 @@ const ConfigurationPage = () => {
     const showCurrentTab = () => {
         if(currentTab === 2) {
             return (
-                <h2>About Page Configuration</h2>
+                <div>
+                    <ConfigurationTitle>Welcome Page Configuration</ConfigurationTitle>
+                    <CurrentWelcomeImages images={images} refreshImages={refreshImages} />
+                    <ImportWelcomeImage refreshImages={refreshImages} />
+                    <Contents />
+                </div>
             )
         }
 
         if(currentTab === 3) {
             return (
-                <h2>Theme Configuration</h2>
+                <div>
+                    <h2>About Configuration</h2>
+                    <h4>Title</h4>
+                    <h4>Description</h4>
+                </div>
             )
         }
 
-        return (
-            <div>
-                <ConfigurationTitle>Welcome Page Configuration</ConfigurationTitle>
-                <CurrentWelcomeImages images={images} refreshImages={refreshImages} />
-                <ImportWelcomeImage refreshImages={refreshImages} />
-                <Contents />
-            </div>
-        )
+        return (<AccountPage />);
     }
 
     const refreshImages = async () => {
@@ -88,9 +91,9 @@ const ConfigurationPage = () => {
     return (
         <MainContainer>
             <TabContainer>
-                <TabSelector active={tabOneActive} onClick={() => activateTabOne()}>Welcome Page Configuration</TabSelector>
-                {/* <TabSelector active={tabTwoActive} onClick={() => activateTabTwo()}>About Page Configuration</TabSelector>
-                <TabSelector active={tabThreeActive} onClick={() => activateTabThree()}>Theme Configuration</TabSelector> */}
+                <TabSelector active={tabOneActive} onClick={() => activateTabOne()}>Account</TabSelector>
+                <TabSelector active={tabTwoActive} onClick={() => activateTabTwo()}>Welcome Configuration</TabSelector>
+                <TabSelector active={tabThreeActive} onClick={() => activateTabThree()}>About Configuration</TabSelector>
             </TabContainer>
             <ContentContainer>
                 { showCurrentTab() }

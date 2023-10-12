@@ -8,7 +8,7 @@ export const CompleteResetContainer = styled.div`
     align-items: center;
     text-align: center;
     padding: 30px 0;
-    color: #fff;
+    color: #000;
 `;
 
 export const CompleteResetForm = styled.div`

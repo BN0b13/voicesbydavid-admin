@@ -83,6 +83,7 @@ const AddTestimonial = ({ getTestimonials }) => {
 
         await client.postTestimonial(formData);
         await getTestimonials();
+        window.location.href = '/testimonials';
     }
 
     return (
@@ -95,13 +96,13 @@ const AddTestimonial = ({ getTestimonials }) => {
             <TestimonialInput type='number' value={position} onChange={(e) => positionHandler(e.target.value)} placeholder='Position' />
             <TestimonialInput type='date' value={date} onChange={(e) => setDate(e.target.value)} />
             <TestimonialInput type='text' value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Title' />
-            <TestimonialInput type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name' />
-            <TestimonialInput type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name' />
+            <TestimonialInput type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name*' />
+            <TestimonialInput type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name*' />
             <TestimonialInput type='text' value={initials} onChange={(e) => setInitials(e.target.value)} placeholder='Initials' />
             <TestimonialInput type='text' value={company} onChange={(e) => setCompany(e.target.value)} placeholder='Company' />
             <TestimonialInput type='text' value={url} onChange={(e) => setUrl(e.target.value)} placeholder='URL' />
             <TextSubtitle>Please do not include 'https://' or 'http://' in the url</TextSubtitle>
-            <TestimonialTextarea rows="5" cols="50" value={testimonial} onChange={(e) => setTestimonial(e.target.value)} placeholder='Testimonial' />
+            <TestimonialTextarea rows="5" cols="50" value={testimonial} onChange={(e) => setTestimonial(e.target.value)} placeholder='Testimonial*' />
             <Button onClick={() => submitTestimonial()}>Submit</Button>
         </MainContainer>
     )

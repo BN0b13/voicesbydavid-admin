@@ -9,7 +9,7 @@ export const InitiateResetContainer = styled.div`
     align-items: center;
     text-align: center;
     padding: 30px;
-    color: #fff;
+    color: #000;
 `;
 
 export const InitiateResetForm = styled.div`

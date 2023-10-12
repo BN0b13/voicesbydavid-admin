@@ -3,6 +3,10 @@ import {
 } from 'react-icons/bs';
 
 import {
+  FaRegAddressCard
+} from 'react-icons/fa';
+
+import {
   PiEnvelope
 } from 'react-icons/pi';
 
