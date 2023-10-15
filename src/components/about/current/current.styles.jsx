@@ -5,7 +5,7 @@ export const MainContainer = styled.div`
     flex-direction: column;
 `;
 
-export const CurrentTitle = styled.h4`
+export const CurrentTitle = styled.h2`
     text-align: center;
 `;
 

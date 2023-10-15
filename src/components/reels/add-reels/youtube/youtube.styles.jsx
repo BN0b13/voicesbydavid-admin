@@ -15,3 +15,13 @@ export const YoutubeInput = styled.input`
 export const YoutubeTextarea = styled.textarea`
     margin: 20px 0;
 `;
+
+export const YouTubeSelect = styled.select`
+    margin: 20px 0;
+    width: 150px;
+    text-align: center;
+`;
+
+export const YouTubeOption = styled.option`
+
+`;

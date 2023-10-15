@@ -42,7 +42,14 @@ export default class Client {
         }   
     }
 
-    // Configuration
+    // Categories
+
+    async getCategories() {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get);
+        const account = await fetch(`${api}/categories`, requestOptions);
+        const res = await account.json();
+        return res;
+    }
 
     // Messages
 

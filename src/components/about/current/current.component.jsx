@@ -10,18 +10,20 @@ const CurrentAboutImages = ({ images, getAboutSection }) => {
 
     return (
         <MainContainer>
-            <CurrentTitle>Current Welcome Images</CurrentTitle>
             {images && 
                 images.length === 0 || images === null ?
-                    <CurrentSubtitle>No Current Welcome Images. Add your first below.</CurrentSubtitle>
+                <></>
                 :
-                    images.map((image, index) => {
-                    if(image.position === null) {
-                        image.position = '';
-                    }
-                    return (
-                        <Image key={index} image={image} getAboutSection={getAboutSection} />
-                    )})
+                <>
+                    <CurrentTitle>About Image</CurrentTitle>
+                    {images.map((image, index) => {
+                        if(image.position === null) {
+                            image.position = '';
+                        }
+                        return (
+                            <Image key={index} image={image} getAboutSection={getAboutSection} />
+                    )})}
+                </>
             }
         </MainContainer>
     )

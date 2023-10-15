@@ -11,12 +11,10 @@ export const MainTitle = styled.h2`
 
 `;
 
-export const MainSubtitle = styled.h4`
-
-`;
-
 export const ReelSelect = styled.select`
-
+    margin: 20px 0;
+    width: 150px;
+    text-align: center;
 `;
 
 export const ReelOption = styled.option`

@@ -7,13 +7,15 @@ import Client from '../../../../tools/client';
 
 import {
     YoutubeInput,
+    YouTubeOption,
+    YouTubeSelect,
     YoutubeTextarea,
     MainContainer,
 } from './youtube.styles';
 
 const client = new Client();
 
-const Youtube = () => {
+const Youtube = ({ categories }) => {
     const [ loading, setLoading ] = useState(false);
     const [ reelDate, setReelDate ] = useState('');
     const [ title, setTitle ] = useState('');
@@ -22,16 +24,7 @@ const Youtube = () => {
     const [ companyUrl, setCompanyUrl ] = useState('');
     const [ url, setUrl ] = useState('');
     const [ position, setPosition ] = useState('');
-
-    const clearFields = () => {
-        setReelDate('');
-        setTitle('');
-        setDescription('');
-        setCompany('');
-        setCompanyUrl('');
-        setUrl('');
-        setPosition('');
-    }
+    const [ category, setCategory ] = useState('');
 
     const positionHandler = (value) => {
         if(value < 0) {
@@ -43,13 +36,15 @@ const Youtube = () => {
 
     const submitVideo = async () => {
         setLoading(true);
-        if(url === ''||
-        title === '') {
+        if(category === '' ||
+            url === ''||
+            title === '') {
             
             return
         }
 
         const data = {
+            categoryId: category,
             url,
             title
         };
@@ -71,6 +66,12 @@ const Youtube = () => {
                 <Spinner />
             :
                 <>
+                    <YouTubeSelect name='reelType' onChange={(e) => setCategory(e.target.value)} defaultValue={0}>
+                        <YouTubeOption value={0} disabled> -- Reel Category -- </YouTubeOption>
+                        {categories.map((item, index) => (
+                            <YouTubeOption key={index} value={item.id}>{item.name}</YouTubeOption>
+                        ))}
+                    </YouTubeSelect>
                     <YoutubeInput type='text' value={url} onChange={(e) => setUrl(e.target.value)} placeholder='URL*' />
                     <YoutubeInput type='text' value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Title*' />
                     <YoutubeTextarea col='50' rows='5' value={description} onChange={(e) => setDescription(e.target.value)} placeholder='Description' />

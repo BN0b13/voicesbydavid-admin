@@ -10,7 +10,8 @@ export const UpdateReelDataContainer = styled.div`
 `;
 
 export const UpdateReelContainer = styled.div`
-    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
 `;
 
@@ -29,6 +30,16 @@ export const ButtonContainer = styled.div`
 `;
 
 export const MainTitle = styled.h2`
+
+`;
+
+export const UpdateReelSelect = styled.select`
+    margin: 20px 0;
+    width: 150px;
+    text-align: center;
+`;
+
+export const UpdateReelOption = styled.option`
 
 `;
 

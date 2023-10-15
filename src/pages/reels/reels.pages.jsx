@@ -7,6 +7,7 @@ import Client from '../../tools/client';
 
 import {
     MainContainer,
+    MainTitle,
     ReelsTable,
     ReelsTableHeader,
     ReelsTableHead,
@@ -33,7 +34,8 @@ const ReelsPage = () => {
 
     const getReels = async () => {
         const res = await client.getReels();
-        setReels(res.rows);
+        const sortReelsByCategory = res.rows.sort((a, b) => a.Category.name.localeCompare(b.Category.name));
+        setReels(sortReelsByCategory);
         setLoading(false);
     }
 
@@ -57,6 +59,7 @@ const ReelsPage = () => {
 
         return (
             <>
+                <MainTitle>Reels</MainTitle>
                 {loading ? 
                     <Spinner />
                 :
@@ -64,6 +67,7 @@ const ReelsPage = () => {
                         <ReelsTable>
                             <ReelsTableHeader>
                                 <ReelsTableRow>
+                                    <ReelsTableHead>Category</ReelsTableHead>
                                     <ReelsTableHead>Position</ReelsTableHead>
                                     <ReelsTableHead>Title</ReelsTableHead>
                                     <ReelsTableHead>Active</ReelsTableHead>
@@ -72,6 +76,7 @@ const ReelsPage = () => {
                             <ReelsTableBody>
                                 {reels.map((reel, index) => (
                                     <ReelsTableRow key={index} onClick={() => window.location.href = `/reels/${reel.id}`}>
+                                        <ReelsTableData>{reel.Category.name}</ReelsTableData>
                                         <ReelsTableData>{reel.position}</ReelsTableData>
                                         <ReelsTableData>{reel.title ? reel.title : 'No Title'}</ReelsTableData>
                                         <ReelsTableData>{reel.active ? 'Yes' : 'No'}</ReelsTableData>

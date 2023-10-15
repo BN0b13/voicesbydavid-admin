@@ -15,13 +15,10 @@ import {
 const client = new Client();
 
 const ImportAboutImage = ({ aboutSection, getAboutSection }) => {
-    console.log('About Section: ', aboutSection);
+    console.log('About Section: ', aboutSection.SectionImages.length);
     const [ image, setImage ] = useState('');
     const [ imagePreview, setImagePreview ] = useState('');
     const [ fileInput, setFileInput ] = useState('');
-    const [ caption, setCaption ] = useState('');
-    const [ link, setLink ] = useState('');
-    const [ position, setPosition ] = useState('');
 
     const [ showMsg, setShowMsg ] = useState(false);
     const [ msgContent, setMsgContent ] = useState('');
@@ -49,44 +46,32 @@ const ImportAboutImage = ({ aboutSection, getAboutSection }) => {
 
         formData.append('files', image);
         formData.append('sectionId', aboutSection.id);
-        if(caption !== '') {
-            formData.append('caption', caption);
-        }
-        if(link !== '') {
-            formData.append('link', link);
-        }
-        if(position !== '') {
-            formData.append('position', position);
-        }
 
         await client.postSectionImage(formData);
 
         setImage('');
         setImagePreview('');
         setFileInput('');
-        setCaption('');
-        setLink('');
-        setPosition('');
 
         getAboutSection();
     }
 
     return (
         <MainContainer>
-            <MainTitle>Add New About Image</MainTitle>
-            <MainForm>
-                {imagePreview && <img src={imagePreview} width='200' height='200' />}
-                <ImageFileInput type="file" accept='image/*' name="files" value={fileInput} onChange={e => handleFileChange(e)} />
-                
-                <ImageFileInput type='text' value={caption} onChange={(e) => setCaption(e.target.value)} placeholder='Caption' />
-                <ImageFileInput type='text' value={link} onChange={(e) => setLink(e.target.value)} placeholder='Link' />
-                <ImageFileInput type='number' value={position} onChange={(e) => setPosition(e.target.value)}  placeholder='Position' />
-            </MainForm>
-            {showMsg &&
-                <Snackbar msg={msgContent} type={msgType} show={setShowMsg} />
+            {aboutSection.SectionImages.length === 0 && 
+                <>
+                    <MainTitle>Add New About Image</MainTitle>
+                    <MainForm>
+                        {imagePreview && <img src={imagePreview} width='200' height='200' />}
+                        <ImageFileInput type="file" accept='image/*' name="files" value={fileInput} onChange={e => handleFileChange(e)} />
+                    </MainForm>
+                    {showMsg &&
+                        <Snackbar msg={msgContent} type={msgType} show={setShowMsg} />
+                    }
+        
+                    <Button onClick={() => createAboutImage()}>Add</Button>
+                </>
             }
-
-            <Button onClick={() => createAboutImage()}>Add</Button>
         </MainContainer>
     )
 }

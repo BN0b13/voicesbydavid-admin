@@ -3,10 +3,6 @@ import {
 } from 'react-icons/bs';
 
 import {
-  FaRegAddressCard
-} from 'react-icons/fa';
-
-import {
   PiEnvelope
 } from 'react-icons/pi';
 
@@ -14,6 +10,8 @@ import {
   VscPerson,
   VscPieChart,
   VscSettingsGear,
+  VscSmiley,
+  VscInfo
 } from 'react-icons/vsc';
 
 export const menuItemsLoggedIn = [
@@ -40,12 +38,12 @@ export const menuItemsLoggedIn = [
   {
     title: 'Welcome',
     path: '/welcome',
-    icon: (<VscSettingsGear />)
+    icon: (<VscSmiley />)
   },
   {
     title: 'About',
     path: '/about',
-    icon: (<VscSettingsGear />)
+    icon: (<VscInfo />)
   },
   {
     title: 'Configuration',

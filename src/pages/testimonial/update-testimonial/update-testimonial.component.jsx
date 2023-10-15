@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import AdminModal from '../../../components/reusable/admin-modal/admin-modal.component';
 import Button from '../../../components/reusable/button/button.component';
 
 import Client from '../../../tools/client';
@@ -33,6 +34,7 @@ const UpdateTestimonial = ({ testimonial, showTestimonial }) => {
     const [ date, setDate ] = useState(testimonial.testimonialDate ? testimonial.testimonialDate : '');
     const [ position, setPosition ] = useState(testimonial.position ? testimonial.position : '');
     const [ testimonialText, setTestimonialText ] = useState(testimonial.testimonial ? testimonial.testimonial : '');
+    const [ showDeleteModal, setShowDeleteModal ] = useState(false);
 
     const handleFileChange = (e) => {
         if(e.target.files[0] === undefined) {
@@ -77,6 +79,10 @@ const UpdateTestimonial = ({ testimonial, showTestimonial }) => {
         await showTestimonial();
     }
 
+    const deleteHandler = () => {
+        setShowDeleteModal(true);
+    }
+
     const deleteTestimonial = async () => {
         await client.deleteTestimonial({id: testimonial.id});
         window.location = '/testimonials';
@@ -84,6 +90,14 @@ const UpdateTestimonial = ({ testimonial, showTestimonial }) => {
 
     return (
         <>
+            <AdminModal 
+                show={showDeleteModal}
+                setShow={setShowDeleteModal}
+                title={'Delete Testimonial'}
+                message={'Are you sure you want to delete this testimonial forever?'} 
+                action={deleteTestimonial} 
+                actionText={'Delete'}
+            />
             <MainTitle>Update Testimonial</MainTitle>
                 {testimonial.path ?
                     <>
@@ -119,7 +133,7 @@ const UpdateTestimonial = ({ testimonial, showTestimonial }) => {
                 <Button onClick={async () => await showTestimonial()}>Cancel</Button>
                 <Button onClick={() => submitTestimonialUpdate()}>Update</Button>
             </ButtonContainer>
-            <DeleteTestimonialButton color='red' onClick={() => deleteTestimonial()}>DELETE</DeleteTestimonialButton>
+            <DeleteTestimonialButton color='red' onClick={() => deleteHandler()}>DELETE</DeleteTestimonialButton>
         </>
     )
 }

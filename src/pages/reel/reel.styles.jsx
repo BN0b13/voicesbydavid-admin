@@ -10,16 +10,15 @@ export const MainContainer = styled.div`
 export const ReelContainerColumn = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: left;
-    margin: 40px;
+    text-align: start;
+    width: 50%;
 `;
 
 export const ReelContainerRow = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    max-width: 600px;
+    margin-top: 40px;
 `;
 
 export const ButtonContainer = styled.div`
@@ -40,8 +39,8 @@ export const BackText = styled.h4`
 `;
 
 export const ReelText = styled.h4`
-    margin: 1px;
-    padding: 2px;
+    margin: 6px;
+    padding: 4px;
 `;
 
 export const ActivationButton = styled.button`

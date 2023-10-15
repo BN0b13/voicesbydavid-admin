@@ -64,26 +64,29 @@ const ReelPage = () => {
 
         return (
             <>
+                <MainTitle>Reel Title: {reel.title}</MainTitle>
+                <ReelText>Description: {reel.description}</ReelText>
                 <ReactPlayer
                     url={reel.url}
                     height='400px'
                     width='600px'
                 />
+                
                 <ReelContainerRow>
                     <ReelContainerColumn>
-                        <ReelText>Title: {reel.title}</ReelText>
-                        <ReelText>Description: {reel.description}</ReelText>
+                        <ReelText>Active: {reel.active ? 'Yes' : 'No'}</ReelText>
+                        <ReelText>Position: {reel.position}</ReelText>
                         <ReelText>Company: {reel.company}</ReelText>
                         <ReelText>Company URL: {reel.companyUrl}</ReelText>
                     </ReelContainerColumn>
                     <ReelContainerColumn>
+                        <ReelText>Reel Category: {reel.Category.name}</ReelText>
                         <ReelText>Reel Type: {reel.reelType}</ReelText>
                         <ReelText>Reel Date: {reel.reelDate ? formatInputDate(reel.reelDate) : ''}</ReelText>
                         <ReelText>Reel URL: {reel.url ? formatYoutubeUrl(reel.url) : ''}</ReelText>
-                        <ReelText>Position: {reel.position}</ReelText>
                     </ReelContainerColumn>
                 </ReelContainerRow>
-                <ReelText>Active: {reel.active ? 'Yes' : 'No'}</ReelText>
+                
                 <ButtonContainer>
                     <ActivationButton color={reel.active ? 'red' : 'green'} onClick={() => changeActivationStatus()}>{ reel.active ? 'DEACTIVATE' : 'ACTIVATE' }</ActivationButton>
                     <Button onClick={() => setShowUpdate(true)}>Update</Button>

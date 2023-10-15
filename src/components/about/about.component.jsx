@@ -96,12 +96,10 @@ const About = ({ aboutSection, getAboutSection }) => {
 
         return (
             <>
-                <AboutTitle>Title: </AboutTitle>
-                <AboutTitle>{aboutSection.titleOn ? title : 'OFF'}</AboutTitle>
-                <AboutSubtitle>Subtitle: </AboutSubtitle>
-                <AboutSubtitle>{aboutSection.subtitleOn ? subtitle : 'OFF'}</AboutSubtitle>
-                <AboutParagraph>Paragraph: </AboutParagraph>
-                <AboutParagraph>{aboutSection.paragraphOn ? paragraph : 'OFF'}</AboutParagraph>
+                <AboutTitle>About Section</AboutTitle>
+                <AboutSubtitle>Title: {aboutSection.titleOn ? title : 'OFF'} </AboutSubtitle>
+                <AboutSubtitle>Subtitle: {aboutSection.subtitleOn ? subtitle : 'OFF'}</AboutSubtitle>
+                <AboutParagraph>Paragraph: {aboutSection.paragraphOn ? paragraph : 'OFF'}</AboutParagraph>
                 <Button onClick={() => setShowUpdate(true)}>Update</Button>
             </>
         )

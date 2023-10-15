@@ -7,6 +7,10 @@ export const MainContainer = styled.div`
     align-items: center;
 `;
 
+export const MainTitle = styled.h2`
+
+`;
+
 export const TabContainer = styled.div`
     display: flex;
     flex-direction: row;

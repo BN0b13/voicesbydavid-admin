@@ -29,7 +29,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const AboutTitle = styled.h2`
-
+    margin: 40px 0;
 `;
 
 export const AboutSubtitle = styled.h4`
