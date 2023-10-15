@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import Button from "../../../reusable/button/button.component";
-import Snackbar from '../../../reusable/snackbar/snackbar.component';
+import Button from "../../reusable/button/button.component";
+import Snackbar from '../../reusable/snackbar/snackbar.component';
 
-import Client from "../../../../tools/client";
+import Client from "../../../tools/client";
 
 import {
     ImageFileInput,
@@ -14,7 +14,7 @@ import {
 
 const client = new Client();
 
-const ImportWelcomeImage = ({ refreshImages }) => {
+const ImportWelcomeImage = ({ welcomeSection, getWelcomeSection }) => {
     const [ image, setImage ] = useState('');
     const [ imagePreview, setImagePreview ] = useState('');
     const [ fileInput, setFileInput ] = useState('');
@@ -47,6 +47,7 @@ const ImportWelcomeImage = ({ refreshImages }) => {
         let formData = new FormData();
 
         formData.append('files', image);
+        formData.append('sectionId', welcomeSection.id);
         if(caption !== '') {
             formData.append('caption', caption);
         }
@@ -57,7 +58,7 @@ const ImportWelcomeImage = ({ refreshImages }) => {
             formData.append('position', position);
         }
 
-        await client.postWelcomeImage(formData);
+        await client.postSectionImage(formData);
 
         setImage('');
         setImagePreview('');
@@ -66,7 +67,7 @@ const ImportWelcomeImage = ({ refreshImages }) => {
         setLink('');
         setPosition('');
 
-        refreshImages();
+        getWelcomeSection();
     }
 
     return (

@@ -44,41 +44,6 @@ export default class Client {
 
     // Configuration
 
-    async getWelcomeImages() {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get);
-        const getWelcomeImage = await fetch(`${api}/welcome/images`, requestOptions);
-        const res = await getWelcomeImage.json();
-        return res;
-    }
-
-    async postWelcomeImage(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.post, data, true, true);
-        const postWelcomeImage = await fetch(`${api}/admin/welcome/images`, requestOptions);
-        const res = await postWelcomeImage.json();
-        return res;
-    }
-
-    async updateWelcomeImage(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
-        const patchWelcomeImage = await fetch(`${api}/admin/welcome/images`, requestOptions);
-        const res = await patchWelcomeImage.json();
-        return res;
-    }
-
-    async deleteImages(data) {
-        const requestOptions = this.fetchOptions(this.fetchMethods.delete, data, true);
-        const welcomeImage = await fetch(`${api}/admin/welcome/images`, requestOptions);
-        const res = await welcomeImage.json();
-        return res;
-    }
-
-    async getWelcomeContent() {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get);
-        const getWelcomeContent = await fetch(`${api}/welcome/content`, requestOptions);
-        const res = await getWelcomeContent.json();
-        return res;
-    }
-
     // Messages
 
     async getMessages() {
@@ -162,6 +127,50 @@ export default class Client {
         const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
         const patchWelcomeImage = await fetch(`${api}/admin/reels/youtube`, requestOptions);
         const res = await patchWelcomeImage.json();
+        return res;
+    }
+
+    // Sections
+
+    async getAboutSection() {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get);
+        const getWelcomeImage = await fetch(`${api}/sections/about`, requestOptions);
+        const res = await getWelcomeImage.json();
+        return res;
+    }
+
+    async getWelcomeSection() {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get);
+        const getWelcomeImage = await fetch(`${api}/sections/welcome`, requestOptions);
+        const res = await getWelcomeImage.json();
+        return res;
+    }
+
+    async postSectionImage(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.post, data, true, true);
+        const postWelcomeImage = await fetch(`${api}/admin/sections/images`, requestOptions);
+        const res = await postWelcomeImage.json();
+        return res;
+    }
+
+    async updateSection(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
+        const patchWelcomeImage = await fetch(`${api}/admin/sections`, requestOptions);
+        const res = await patchWelcomeImage.json();
+        return res;
+    }
+
+    async updateWelcomeImage(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
+        const patchWelcomeImage = await fetch(`${api}/admin/sections/welcome/images`, requestOptions);
+        const res = await patchWelcomeImage.json();
+        return res;
+    }
+
+    async deleteImages(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.delete, data, true);
+        const welcomeImage = await fetch(`${api}/admin/sections/images`, requestOptions);
+        const res = await welcomeImage.json();
         return res;
     }
 

@@ -6,7 +6,7 @@ import {
     MainContainer
 } from './current.styles';
 
-const CurrentWelcomeImages = ({ images, refreshImages }) => {
+const CurrentWelcomeImages = ({ images, getWelcomeSection }) => {
 
     return (
         <MainContainer>
@@ -20,7 +20,7 @@ const CurrentWelcomeImages = ({ images, refreshImages }) => {
                         image.position = '';
                     }
                     return (
-                        <Image key={index} image={image} refreshImages={refreshImages} />
+                        <Image key={index} image={image} getWelcomeSection={getWelcomeSection} />
                     )})
             }
         </MainContainer>

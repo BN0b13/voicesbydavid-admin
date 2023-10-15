@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import AboutPage from './pages/about/about.pages';
 import ConfigurationPage from './pages/configuration/configuration.pages';
 import LoginPage from './pages/login/login.pages';
 import MessagePage from './pages/message/message.pages';
@@ -12,6 +13,7 @@ import ReelsPage from './pages/reels/reels.pages';
 import TestimonialPage from './pages/testimonial/testimonial.pages';
 import TestimonialsPage from './pages/testimonials/testimonials.pages';
 import UpdatePasswordPage from './pages/update-password/update-password.pages';
+import WelcomePage from './pages/welcome/welcome.pages';
 
 import Footer from './components/app/footer/footer.component';
 import HamburgerMenu from './components/app/hamburger-menu/hamburger-menu.component';
@@ -43,14 +45,16 @@ function App() {
             <Header />
             <Routes>
                 <Route index element={<MetricsPage />} />
+                <Route path='/about' element={<AboutPage />} />
+                <Route path='/configuration' element={<ConfigurationPage />} />
+                <Route path='/configuration/update-password' element={<UpdatePasswordPage />} />
                 <Route path='/messages' element={<MessagesPage />} />
                 <Route path='/messages/:id' element={<MessagePage />} />
                 <Route path='/reels' element={<ReelsPage />} />
                 <Route path='/reels/:id' element={<ReelPage />} />
                 <Route path='/testimonials' element={<TestimonialsPage />} />
                 <Route path='/testimonials/:id' element={<TestimonialPage />} />
-                <Route path='/configuration' element={<ConfigurationPage />} />
-                <Route path='/configuration/update-password' element={<UpdatePasswordPage />} />
+                <Route path='/welcome' element={<WelcomePage />} />
             </Routes>
             <Footer />
           </div>

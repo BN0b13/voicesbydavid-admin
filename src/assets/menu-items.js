@@ -38,6 +38,16 @@ export const menuItemsLoggedIn = [
     icon: (<VscPerson />)
   },
   {
+    title: 'Welcome',
+    path: '/welcome',
+    icon: (<VscSettingsGear />)
+  },
+  {
+    title: 'About',
+    path: '/about',
+    icon: (<VscSettingsGear />)
+  },
+  {
     title: 'Configuration',
     path: '/configuration',
     icon: (<VscSettingsGear />)

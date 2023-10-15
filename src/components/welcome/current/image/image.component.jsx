@@ -3,12 +3,12 @@ import {
     VscChromeClose
 } from "react-icons/vsc";
 
-import Button from "../../../../reusable/button/button.component";
-import AdminModal from '../../../../reusable/admin-modal/admin-modal.component';
-import Snackbar from '../../../../reusable/snackbar/snackbar.component';
+import Button from "../../../reusable/button/button.component";
+import AdminModal from '../../../reusable/admin-modal/admin-modal.component';
+import Snackbar from '../../../reusable/snackbar/snackbar.component';
 
-import { api } from '../../../../../config';
-import Client from "../../../../../tools/client";
+import { api } from '../../../../config';
+import Client from "../../../../tools/client";
 
 import {
     CloseIconContainer,
@@ -25,7 +25,7 @@ import {
 
 const client = new Client();
 
-const Image = ({ image, refreshImages }) => {
+const Image = ({ image, getWelcomeSection }) => {
     const url = `${api}${image.path}`;
 
     const [ showDeleteModal, setShowDeleteModal ] = useState(false);
@@ -67,7 +67,7 @@ const Image = ({ image, refreshImages }) => {
 
         setShowEdit(false);
 
-        refreshImages();
+        getWelcomeSection();
     }
 
     const confirmDelete = () => {
@@ -83,7 +83,7 @@ const Image = ({ image, refreshImages }) => {
 
         setShowDeleteModal(false);
 
-        refreshImages();
+        getWelcomeSection();
     }
 
     const textDetails = () => {
