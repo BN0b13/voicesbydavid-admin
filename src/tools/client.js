@@ -241,6 +241,13 @@ export default class Client {
         return res;
     }
 
+    async deleteTestimonialImage(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.delete, data, true);
+        const welcomeImage = await fetch(`${api}/admin/testimonials/image`, requestOptions);
+        const res = await welcomeImage.json();
+        return res;
+    }
+
     // Users
 
     async getUser() {

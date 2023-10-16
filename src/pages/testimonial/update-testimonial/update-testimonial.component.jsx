@@ -83,6 +83,11 @@ const UpdateTestimonial = ({ testimonial, showTestimonial }) => {
         setShowDeleteModal(true);
     }
 
+    const deleteTestimonialImage = async () => {
+        await client.deleteTestimonialImage({id: testimonial.id});
+        await showTestimonial();
+    }
+
     const deleteTestimonial = async () => {
         await client.deleteTestimonial({id: testimonial.id});
         window.location = '/testimonials';
@@ -102,7 +107,7 @@ const UpdateTestimonial = ({ testimonial, showTestimonial }) => {
                 {testimonial.path ?
                     <>
                         <UpdateTestimonialImage src={api + testimonial.path} />
-                        <Button onClick={() => console.log('HOOK THIS SHIT UP, DAWG')}>DELETE Image</Button>
+                        <Button onClick={() => deleteTestimonialImage()}>DELETE Image</Button>
                     </>
                 :
                     <>
