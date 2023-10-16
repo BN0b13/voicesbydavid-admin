@@ -1,18 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import AccountPage from '../account/account.pages';
-
-import Client from "../../tools/client";
+import SocialMedia from '../../components/social-media/social-media.component';
 
 import {
-    ConfigurationTitle,
     ContentContainer,
     MainContainer,
     TabContainer,
     TabSelector
 } from './configuration.styles';
-
-const client = new Client();
 
 const ConfigurationPage = () => {
     const [ currentTab, setCurrentTab ] = useState(1);
@@ -43,7 +39,7 @@ const ConfigurationPage = () => {
 
     const showCurrentTab = () => {
         if(currentTab === 2) {
-            return (<></>)
+            return (<SocialMedia />)
         }
 
         if(currentTab === 3) {
@@ -57,8 +53,8 @@ const ConfigurationPage = () => {
         <MainContainer>
             <TabContainer>
                 <TabSelector active={tabOneActive} onClick={() => activateTabOne()}>Account</TabSelector>
-                {/* <TabSelector active={tabTwoActive} onClick={() => activateTabTwo()}></TabSelector>
-                <TabSelector active={tabThreeActive} onClick={() => activateTabThree()}></TabSelector> */}
+                <TabSelector active={tabTwoActive} onClick={() => activateTabTwo()}>Social Media</TabSelector>
+                {/* <TabSelector active={tabThreeActive} onClick={() => activateTabThree()}></TabSelector> */}
             </TabContainer>
             <ContentContainer>
                 { showCurrentTab() }

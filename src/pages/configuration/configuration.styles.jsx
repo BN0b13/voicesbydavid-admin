@@ -11,10 +11,6 @@ export const ContentContainer = styled.div`
     align-items: center;
 `;
 
-export const ConfigurationTitle = styled.h2`
-    text-align: center;
-`;
-
 export const TabContainer = styled.div`
     display: flex;
     flex-direction: row;

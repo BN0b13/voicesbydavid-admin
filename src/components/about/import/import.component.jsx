@@ -15,7 +15,6 @@ import {
 const client = new Client();
 
 const ImportAboutImage = ({ aboutSection, getAboutSection }) => {
-    console.log('About Section: ', aboutSection.SectionImages.length);
     const [ image, setImage ] = useState('');
     const [ imagePreview, setImagePreview ] = useState('');
     const [ fileInput, setFileInput ] = useState('');
