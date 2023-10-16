@@ -51,6 +51,29 @@ export default class Client {
         return res;
     }
 
+    // Configuration
+
+    async getAdminConfiguration() {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
+        const configuration = await fetch(`${api}/admin/configuration`, requestOptions);
+        const res = await configuration.json();
+        return res;
+    }
+
+    async getPublicConfiguration() {
+        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
+        const configuration = await fetch(`${api}/admin/configuration/public`, requestOptions);
+        const res = await configuration.json();
+        return res;
+    }
+    
+    async updatePublicSocialMedia(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
+        const patchWelcomeImage = await fetch(`${api}/admin/configuration/public/social-media`, requestOptions);
+        const res = await patchWelcomeImage.json();
+        return res;
+    }
+
     // Messages
 
     async getMessages() {
