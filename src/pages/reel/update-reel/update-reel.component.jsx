@@ -23,6 +23,7 @@ import {
 const client = new Client();
 
 const UpdateReel = ({ reel, completeUpdate }) => {
+    console.log('UPDATE Reel: ', reel);
     const [ loading, setLoading ] = useState(true);
     const [ categories, setCategories ] = useState('');
     const [ category, setCategory ] = useState(reel.Category.id);
@@ -56,24 +57,27 @@ const UpdateReel = ({ reel, completeUpdate }) => {
 
     const submitReelUpdate = async () => {
         if(category === '' ||
-            url === '' ||
             title === '') {
             return
         }
-        
-        const data = {
+
+        let data = {
             id: reel.id,
             categoryId: category,
             title,
             description,
             company,
             companyUrl,
-            url,
             reelDate,
             position: position ? parseInt(position) : 0
         }
 
-        await client.updateYoutubeReel(data);
+        if(reel.reelType === 'youtube' && url === '' ) {
+            data.url = url;
+            return
+        }
+
+        await client.updateReel(data);
         await completeUpdate();
     }
 
@@ -112,13 +116,15 @@ const UpdateReel = ({ reel, completeUpdate }) => {
                             <UpdateReelInput type='text' value={companyUrl} onChange={(e) => setCompanyUrl(e.target.value)} placeholder='Company URL' />
                         </ContactInfoContainer>
                         <ContactInfoContainer>
-                            <UpdateReelSelect name='reelType' onChange={(e) => setCategory(e.target.value)} defaultValue={reel.Category.id}>
+                            <UpdateReelSelect onChange={(e) => setCategory(e.target.value)} defaultValue={reel.Category.id}>
                                 {categories.map((item, index) => (
                                     <UpdateReelOption key={index} value={item.id}>{item.name}</UpdateReelOption>
                                 ))}
                             </UpdateReelSelect>
                             <UpdateReelInput type='date' value={reelDate} onChange={(e) => setReelDate(e.target.value)} />
-                            <UpdateReelInput type='text' value={url} onChange={(e) => setUrl(e.target.value)} placeholder='Reel URL' />
+                            {reel.reelType === 'youtube' &&
+                                <UpdateReelInput type='text' value={url} onChange={(e) => setUrl(e.target.value)} placeholder='Reel URL' />
+                            }
                         </ContactInfoContainer>
                     </UpdateReelDataContainer>
                     

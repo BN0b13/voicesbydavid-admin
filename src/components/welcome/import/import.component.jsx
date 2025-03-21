@@ -34,7 +34,7 @@ const ImportWelcomeImage = ({ welcomeSection, getWelcomeSection }) => {
         }
 
         setImagePreview(URL.createObjectURL(e.target.files[0]));
-      }
+    }
 
     const createWelcomeImage = async () => {
         if(image === '') {

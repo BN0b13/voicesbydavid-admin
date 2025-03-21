@@ -42,6 +42,15 @@ export default class Client {
         }   
     }
 
+    // Audio Reel
+
+    async postAudioReel(data) {
+        const requestOptions = this.fetchOptions(this.fetchMethods.post, data, true, true);
+        const postAudio = await fetch(`${api}/admin/reels/audio`, requestOptions);
+        const res = await postAudio.json();
+        return res;
+    }
+
     // Categories
 
     async getCategories() {
@@ -100,15 +109,15 @@ export default class Client {
     // Reels
 
     async getReels() {
-        const requestOptions = this.fetchOptions(this.fetchMethods.get);
-        const getWelcomeImage = await fetch(`${api}/reels`, requestOptions);
+        const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
+        const getWelcomeImage = await fetch(`${api}/admin/reels`, requestOptions);
         const res = await getWelcomeImage.json();
         return res;
     }
 
     async getReelById(id) {
         const requestOptions = this.fetchOptions(this.fetchMethods.get, '', true);
-        const getWelcomeImage = await fetch(`${api}/admin/reels/all/${id}`, requestOptions);
+        const getWelcomeImage = await fetch(`${api}/admin/reels/${id}`, requestOptions);
         const res = await getWelcomeImage.json();
         return res;
     }
@@ -148,15 +157,15 @@ export default class Client {
 
     async postYoutubeReel(data) {
         const requestOptions = this.fetchOptions(this.fetchMethods.post, data, true);
-        const postWelcomeImage = await fetch(`${api}/admin/reels/youtube`, requestOptions);
-        const res = await postWelcomeImage.json();
+        const postYoutube = await fetch(`${api}/admin/reels/youtube`, requestOptions);
+        const res = await postYoutube.json();
         return res;
     }
 
-    async updateYoutubeReel(data) {
+    async updateReel(data) {
         const requestOptions = this.fetchOptions(this.fetchMethods.patch, data, true);
-        const patchWelcomeImage = await fetch(`${api}/admin/reels/youtube`, requestOptions);
-        const res = await patchWelcomeImage.json();
+        const patchYoutube = await fetch(`${api}/admin/reels`, requestOptions);
+        const res = await patchYoutube.json();
         return res;
     }
 

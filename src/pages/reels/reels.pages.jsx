@@ -33,6 +33,7 @@ const ReelsPage = () => {
     }, []);
 
     const getReels = async () => {
+        setLoading(true);
         const res = await client.getReels();
         const sortReelsByCategory = res.rows.sort((a, b) => a.Category.name.localeCompare(b.Category.name));
         setReels(sortReelsByCategory);
@@ -68,6 +69,7 @@ const ReelsPage = () => {
                             <ReelsTableHeader>
                                 <ReelsTableRow>
                                     <ReelsTableHead>Category</ReelsTableHead>
+                                    <ReelsTableHead>Type</ReelsTableHead>
                                     <ReelsTableHead>Position</ReelsTableHead>
                                     <ReelsTableHead>Title</ReelsTableHead>
                                     <ReelsTableHead>Active</ReelsTableHead>
@@ -77,6 +79,7 @@ const ReelsPage = () => {
                                 {reels.map((reel, index) => (
                                     <ReelsTableRow key={index} onClick={() => window.location.href = `/reels/${reel.id}`}>
                                         <ReelsTableData>{reel.Category.name}</ReelsTableData>
+                                        <ReelsTableData>{reel.reelType}</ReelsTableData>
                                         <ReelsTableData>{reel.position}</ReelsTableData>
                                         <ReelsTableData>{reel.title ? reel.title : 'No Title'}</ReelsTableData>
                                         <ReelsTableData>{reel.active ? 'Yes' : 'No'}</ReelsTableData>

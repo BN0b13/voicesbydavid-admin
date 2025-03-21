@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 
+import AddReelAudio from './add-reel-audio/add-reel-audio.component';
+import AddReelVideo from './add-reel-video/add-reel-video.component';
+import AddReelYoutube from './add-reel-youtube/add-reel-youtube.component';
 import Spinner from '../../reusable/spinner/spinner.component';
-import Youtube from './youtube/youtube.component';
 
 import Client from '../../../tools/client';
 
@@ -31,23 +33,15 @@ const Reels = () => {
     
     const display = () => {
         if(reelType === 'audio') {
-            return (
-                <>
-                    <MainTitle>Audio Coming Soon</MainTitle>
-                </>
-            )
+            return (<AddReelAudio categories={categories} />)
         }
 
         if(reelType === 'video') {
-            return (
-                <>
-                    <MainTitle>Video Coming Soon</MainTitle>
-                </>
-            )
+            return (<AddReelVideo categories={categories} />)
         }
 
         if(reelType === 'youtube') {
-            return (<Youtube categories={categories} />)
+            return (<AddReelYoutube categories={categories} />)
         }
     }
 
